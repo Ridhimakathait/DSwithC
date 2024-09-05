@@ -4,7 +4,7 @@ int top=-1;
 
 int isalpnum(char);
 int priority(char);
-int push(char);
+void push(char);
 char pop();
 
 void main(){
@@ -17,14 +17,16 @@ void main(){
             postfix[k++]=infix[i];
         else if(infix[i]=='(')
             push(infix[i]);
-        else if(infix[i]!=')'){
+        else if(infix[i]==')'){
             while(stack[top]!='(')
                 postfix[k++]=pop();
             pop();
         }
-        else if(priority(infix[i])>=priority(stack[top]))
-            push(infix[i]);
-        postfix[k++]=pop();
+        else{
+            while (top != -1 && priority(stack[top]) >= priority(infix[i])) {
+                postfix[k++]=pop();
+            }
+            push(infix[i]);}
         i++;
     }
     while(top!=-1){
@@ -50,11 +52,13 @@ int priority(char c){
         return 2;
     else if(c=='+'||c=='-')
         return 1;
+    else
+        return 0;
 }
 
-int push(char c){
+void push(char c){
     stack[++top]=c;
-    return top;
+    
 }
 
 char pop(){
