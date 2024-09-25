@@ -7,10 +7,10 @@ typedef struct node{
 }sl;
 
 void traverse(sl* head){
-    sl* ptr=head;
-    while(ptr!=NULL){
-        printf("%d ",ptr->data);
-        ptr=ptr->next;
+    
+    while(head!=NULL){
+        printf("%d ",head->data);
+        head=head->next;
     }
     printf("\n");
 }

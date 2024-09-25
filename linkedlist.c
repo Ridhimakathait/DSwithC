@@ -91,5 +91,5 @@ sl* insertafternode(sl *head,sl *prevnode,int data){
     ptr->next=prevnode->next;
     prevnode->next=ptr;
     return head;
-
+    
 }
