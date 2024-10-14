@@ -1,5 +1,5 @@
 #include<stdio.h>
-
+#include<stdlib.h>
 /*reverse an array*/
 // void reverse(int [],int,int);
 // void main(){
@@ -191,30 +191,53 @@
 //     return 0;
 // }
 
-void oddc(int[],int);
-void main(){
-    int a[10],T,n;
-    scanf("%d",&T);
-    while(T--){
-        scanf("%d",&n);
-        for(int i=0;i<n;i++)
-            scanf("%d",&a[i]);
-        oddc(a,n);
+// void oddc(int[],int);
+// void main(){
+//     int a[10],T,n;
+//     scanf("%d",&T);
+//     while(T--){
+//         scanf("%d",&n);
+//         for(int i=0;i<n;i++)
+//             scanf("%d",&a[i]);
+//         oddc(a,n);
 
+//     }
+// }
+
+// void oddc(int a[],int n){
+//     int c;
+//     for(int i=0;i<n;i++){
+//         c=0;
+//         for(int j=0;j<n;j++){
+//             if(a[i]==a[j])
+//                 c++;
+//         }
+//         if(c%2!=0){
+//             printf("%d",a[i]);
+//             break;}
+        
+//     }
+// }
+
+void nr(int arr[],int l){
+    int count[100]={0};
+    for(int i=0;i<l;i++){
+        count[arr[i]]++;
+    }
+    int nr=0;
+    for(int i=0;i<100;i++){
+        if(count[i]==1){
+            printf("%d",i);
+            nr++;
+        if(nr==3)
+            return;
+        }
+        
     }
 }
 
-void oddc(int a[],int n){
-    int c;
-    for(int i=0;i<n;i++){
-        c=0;
-        for(int j=0;j<n;j++){
-            if(a[i]==a[j])
-                c++;
-        }
-        if(c%2!=0){
-            printf("%d",a[i]);
-            break;}
-        
-    }
+void main(){
+    
+    int a[7]={1,2,3,4,2,5,6};
+    nr(a,7);
 }

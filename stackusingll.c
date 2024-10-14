@@ -15,14 +15,14 @@ void push(stack*,int);
 void pop(stack*);
 void display(stack*);
 void seek(stack*,int);
-
+void rev(node*);
 
 void main(){
     stack* stack;
     stack->head=NULL;
     int ch,n;
     do{
-        printf("enter choice:\n1.push\n2.pop\n3.display\n4.seek\n5.end\n");
+        printf("enter choice:\n1.push\n2.pop\n3.display\n4.seek\n5.reverse\n");
         scanf("%d",&ch);
         switch (ch)
         {
@@ -35,13 +35,17 @@ void main(){
             pop(stack);
             break;
         case 3:
-        display(stack);
+            display(stack);
+            break;
         case 4:
             seek(stack,5);
         case 5:
+            rev(stack->head);
             break;
+        default:
+        printf("invalid choice");break;
         }
-    }while(ch!=5);
+    }while(ch<=5);
 }
 
 void push(stack* stack,int data){
@@ -85,4 +89,18 @@ void seek(stack* stack,int x){
         temp=temp->next;
     }
 
+}
+
+void rev(node* top){
+    
+    if(top==NULL)
+        printf("empty stack");
+    
+    if(top->next==NULL){
+        printf("%d",top->data);
+        return;
+    }
+
+    rev(top->next);
+    printf("%d",top->data);
 }
