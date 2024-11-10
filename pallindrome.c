@@ -34,6 +34,7 @@ int ispallindrome(node* head){
         fast=fast->next->next;
     }
     node* secondstart=reverse(slow->next);
+    node* secondcopy=secondstart;
     node* firststart=head;
     int res=1;
     while(secondstart!=NULL){
@@ -43,7 +44,7 @@ int ispallindrome(node* head){
     firststart=firststart->next;
     secondstart=secondstart->next;
     }
-    slow->next = reverse(secondstart);
+    slow->next=reverse(secondcopy);
     return res;
 }
 
@@ -55,7 +56,7 @@ int main(){
     head=createnode(2);
     head->next=createnode(1);
     head->next->next=createnode(3);
-    head->next->next->next=createnode(5);
+    head->next->next->next=createnode(1);
     head->next->next->next->next=createnode(2);
     head->next->next->next->next->next=NULL;
 
@@ -69,5 +70,12 @@ int main(){
         printf("pallindrome");
     else
         printf("not");
+
+    ptr=head;
+    while(ptr!=NULL){
+        printf("%d ",ptr->data);
+        ptr=ptr->next;
+    }
     return 0;
+
 }
